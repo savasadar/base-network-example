@@ -8,10 +8,16 @@ const config: HardhatUserConfig = {
     version: '0.8.17',
   },
   networks: {
+    // for mainnet
+    'base-mainnet': {
+      url: 'https://mainnet.base.org',
+      accounts: [process.env.WALLET_KEY as string],
+    },
     // for testnet
     'base-goerli': {
       url: 'https://goerli.base.org',
       accounts: [process.env.WALLET_KEY as string],
+      gasPrice: 100,
     },
     // for local dev environment
     'base-local': {
@@ -19,7 +25,31 @@ const config: HardhatUserConfig = {
       accounts: [process.env.WALLET_KEY as string],
     },
   },
-  defaultNetwork: 'hardhat',
+  etherscan: {
+    apiKey: {
+      "base-goerli": "PLACEHOLDER_STRING",
+      "base-mainnet": "<YOUR_API_KEY>"
+    },
+    customChains: [
+      {
+        network: "base-goerli",
+        chainId: 84531,
+        urls: {
+          apiURL: "https://api-goerli.basescan.org/api",
+          browserURL: "https://goerli.basescan.org"
+        }
+      },
+      {
+        network: "base-mainnet",
+        chainId: 8453,
+        urls: {
+          apiURL: "https://api.basescan.org/api",
+          browserURL: "https://basescan.org"
+        }
+      }
+    ]
+  },
+  defaultNetwork: 'base-goerli',
 };
 
 export default config;  

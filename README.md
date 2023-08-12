@@ -15,3 +15,9 @@ npx hardhat run scripts/deploy.ts
 ```shell
 npx hardhat run scripts/deploy.ts --network base-goerli
 ```
+
+For Mainnet
+```shell
+npx hardhat run scripts/deploy.ts --network base-mainnet
+npx hardhat verify --network base-mainnet <YOUR_CONTRACT_ADDRESS>
+```
