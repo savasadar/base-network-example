@@ -12,6 +12,11 @@ npx hardhat node
 npx hardhat run scripts/deploy.ts
 ```
 
+Compile the Smart Contract!
+```shell
+npx hardhat compile
+```
+
 ```shell
 npx hardhat run scripts/deploy.ts --network base-goerli
 ```
